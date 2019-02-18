@@ -27,10 +27,11 @@ class App extends Component {
   }
 
   render() {
+    const data = this.state.data;
     return (
       <div className="main-app">
         <Header />
-        <VideoList />
+        <VideoList data={data}/>
       </div>
     );
   }

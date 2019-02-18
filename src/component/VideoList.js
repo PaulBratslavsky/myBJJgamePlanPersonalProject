@@ -4,12 +4,25 @@ import VideoSingleDetails from './VideoSingleDetails';
 
 export default class VideoList extends Component {
   render() {
+
+    const data = this.props.data;
+
     return (
-      <header className="main-video-list">
-        <h2>Hello From Video List</h2>
-        <VideoListSingle />
-        <VideoSingleDetails />
-      </header>
+      <div className="container">
+        <div className="row marg-54">
+          <div className="text-center">
+            { 
+              data.map( item => <VideoListSingle key={item.id} item={item} />) 
+            }
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="text-center">
+            <VideoSingleDetails />
+          </div>
+        </div>
+      </div>
     )
   }
 }
