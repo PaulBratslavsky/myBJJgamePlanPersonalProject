@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import Header from './component/Header';
 import VideoList from './component/VideoList';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
   state = {
