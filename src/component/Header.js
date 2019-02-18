@@ -5,7 +5,7 @@ export default class Header extends Component {
   render() {
     return (
       <header className="main-header">
-        <nav className="navbar sticky-top navbar-light bg-light">
+        <nav className="navbar fixed-top navbar-dark bg-dark">
           {/*<a className="navbar-brand" href="#">Navbar</a>*/}
           <Search />
         </nav>
