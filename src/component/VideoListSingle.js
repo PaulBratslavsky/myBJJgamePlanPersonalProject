@@ -25,7 +25,7 @@ export default class VideoListSingle extends Component {
         <div>{postExcerpt}</div>
         <div>
           <button className="btn btn-success">Details</button>
-          <button className="btn btn-primary">Save</button>
+          <button className="btn btn-primary" disabled>Save</button>
         </div>
       </div>    
     )
