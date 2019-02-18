@@ -9,7 +9,7 @@ export default class VideoList extends Component {
 
     return (
       <div className="container">
-        <div className="row marg-54">
+        <div className="marg-54">
           <div className="text-center">
             { 
               data.map( item => <VideoListSingle key={item.id} item={item} />) 
@@ -17,7 +17,7 @@ export default class VideoList extends Component {
           </div>
         </div>
 
-        <div className="row">
+        <div className="">
           <div className="text-center">
             <VideoSingleDetails />
           </div>
