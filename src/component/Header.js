@@ -7,7 +7,9 @@ export default class Header extends Component {
       <header className="main-header">
         <nav className="navbar fixed-top navbar-dark bg-dark">
           {/*<a className="navbar-brand" href="#">Navbar</a>*/}
+          <div className="container">
           <Search />
+          </div>
         </nav>
       </header>
 

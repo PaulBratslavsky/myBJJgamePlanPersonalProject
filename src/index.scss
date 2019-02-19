@@ -1,3 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+  padding: 0;
+}
+
+small {
+  background: #222830;
+  color: #e09b1a;
+
+  margin-right: 0.5rem;
+  padding: 0.25rem 0.75rem;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -8,7 +25,7 @@ body {
 }
 
 .marg-54 {
-  padding-top: 75px;
+  padding-top: 70px;
 }
 
 // FIX VIDEO
@@ -26,3 +43,64 @@ body {
 	width: 100%;
 	height: 100%;
 }
+
+// GENERAL CARDS LAYOUT
+.videos {
+  display: flex;
+  flex-wrap: wrap;
+
+  .video {
+    display: flex;
+    flex-direction: column;
+
+    background: #e09b1a;
+
+    width: 320px;
+    flex: 1 auto;
+    margin: 10px;
+
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    .video-header {
+      display: flex; 
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+
+      min-height: 100px;
+      h2 {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        flex: 1;
+        margin: 0.5rem;
+      }
+    }
+  }
+
+  .content {
+    padding: 1rem;
+    font-size: 1.4rem;
+  }
+  .video .content {
+    flex: 1 1 auto;
+}
+
+  .video:nth-child(1) {
+    width: 100%;
+  }
+
+
+    
+}
+
+
