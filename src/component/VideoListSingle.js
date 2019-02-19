@@ -18,15 +18,24 @@ export default class VideoListSingle extends Component {
     const postExcerpt = ReactHtmlParser(excerpt.rendered);
 
     return (
-      <div className="card">
-        <h2>{postTitle}</h2>
+      <div className="video">
+        <header className="video-header">
+          <h2 className="text-uppercase">{postTitle}</h2>
+        </header>
+
         <div className="videoWrapper">{postVideo}</div> 
-        <span><small>{postOptions}</small><small>{postTags}</small></span> 
-        <div>{postExcerpt}</div>
-        <div>
-          <button className="btn btn-success">Details</button>
-          <button className="btn btn-primary" disabled>Save</button>
+        
+        <div className="content">
+          <div class="d-flex justify-content-end .flex-wrap">
+            <small>{postOptions}</small><small>{postTags}</small>
+          </div>
+          <div>{postExcerpt}</div>
         </div>
+        
+        <footer className="video-footer">
+          <button className="btn btn-success" disabled>Details</button>
+          <button className="btn btn-primary" disabled>Save</button>
+        </footer>
       </div>    
     )
   }
