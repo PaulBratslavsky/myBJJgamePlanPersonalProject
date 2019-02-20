@@ -5,25 +5,17 @@ import Disqus from 'disqus-react';
 
 class Comments extends React.Component {
     render() {
-        const url = "https://mybjjgameplan.com/";
-        const id = '345';
-        const title = "my blog";
-        const body = "this is a test";
-
-        const disqusShortname = 'example';
+        const disqusShortname = 'mybjjgameplan-com';
         const disqusConfig = {
-            url: url,
-            identifier: id,
-            title: title,
+            url: this.props.url,
+            identifier: this.props.id,
+            title: this.props.title,
         };
 
         return (
             <div className="article">
-                <h1>{title}</h1>
-                <Disqus.CommentCount shortname={disqusShortname} config={disqusConfig}>
-                    Comments
-                </Disqus.CommentCount>
-                <p>{body}</p>
+                <h1>{this.props.title}</h1>
+                <Disqus.CommentCount shortname={disqusShortname} config={disqusConfig} />
                 <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
             </div>
         );

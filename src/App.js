@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.scss';
 import Header from './component/Header';
 import VideoList from './component/VideoList';
+import VideoSingleDetails from './component/VideoSingleDetails';
+
 import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
@@ -31,7 +33,14 @@ class App extends Component {
     return (
       <div className="main-app">
         <Header />
-        <VideoList data={data}/>
+          <div className="container">
+            <div className="marg-54">
+              {/*<VideoList data={data}/>*/}
+              <div className="videos">
+                <VideoSingleDetails/>  
+              </div>
+            </div>
+          </div>
       </div>
     );
   }
