@@ -11,6 +11,7 @@ export default class VideoListSingle extends Component {
       title,
     } = this.props.item;
 
+    console.log(id, "What is this")
     const postVideo = ReactHtmlParser(acf.bjj_video);
     const postTitle = ReactHtmlParser(title.rendered);
     const postOptions = ReactHtmlParser(acf.options);
@@ -26,14 +27,14 @@ export default class VideoListSingle extends Component {
         <div className="videoWrapper">{postVideo}</div> 
         
         <div className="content">
-          <div class="d-flex justify-content-end .flex-wrap">
+          <div className="d-flex justify-content-end .flex-wrap">
             <small>{postOptions}</small><small>{postTags}</small>
           </div>
           <div>{postExcerpt}</div>
         </div>
         
         <footer className="video-footer">
-          <button className="btn btn-success" disabled>Details</button>
+          <button onClick={ () => this.props.handleIndexDetails(0, id) } className="btn btn-success" >Details</button>
           <button className="btn btn-primary" disabled>Save</button>
         </footer>
       </div>    

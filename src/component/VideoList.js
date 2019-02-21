@@ -9,7 +9,7 @@ export default class VideoList extends Component {
     return (
           <div className="videos">
             { 
-              data.map( item => <VideoListSingle key={item.id} item={item} />) 
+              data.map( item => <VideoListSingle handleIndexDetails={this.props.handleIndexDetails} key={item.id} item={item} />) 
             }
           </div>
     )

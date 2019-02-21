@@ -8,7 +8,7 @@ export default class VideoSingleDetails extends Component {
   }
 
   async componentDidMount() {
-    const currentPost = 361;
+    const currentPost = this.props.pageId;
     try {
         const data = await fetch(`https://bjjandfriends.com/wp-json/wp/v2/mybjjgameplan/${currentPost}`);
         const jsonData = await data.json();
@@ -19,6 +19,9 @@ export default class VideoSingleDetails extends Component {
         const postOptions = ReactHtmlParser(jsonData.acf.options);
         const postTags = ReactHtmlParser(jsonData.acf.tags);
         const postContent = ReactHtmlParser(jsonData.content.rendered);
+        const postLink = jsonData.link;
+
+
 
         this.setState({
         id: jsonData.id,
@@ -26,7 +29,9 @@ export default class VideoSingleDetails extends Component {
         content: postContent,
         video: postVideo,
         options: postOptions,
-        tags: postTags
+        tags: postTags,
+        link: postLink,
+        url: currentPost 
         });
     } catch(error) {
       console.log(error, 'Failed in loading Json ');
@@ -37,8 +42,8 @@ export default class VideoSingleDetails extends Component {
 
   render() {
 
-    console.log(this.state.data, 'from request') ;
 
+    console.log("before props", this.state.link, this.props.pageId, this.state.title);
     return (
       <div className="video">
         <header className="video-header">
@@ -50,18 +55,18 @@ export default class VideoSingleDetails extends Component {
         </div> 
           
         <div className="content">
-          <div class="d-flex justify-content-end .flex-wrap">
+          <div className="d-flex justify-content-end .flex-wrap">
             <small>{this.state.options}</small><small>{this.state.tags}</small>
           </div>
           <div>{this.state.content}</div>
         </div>
         
         <footer className="video-footer">
-          <button className="btn btn-success" disabled>Back</button>
+          <button onClick={() => this.props.handleIndexChange(1) }className="btn btn-success">Back</button>
           <button className="btn btn-primary" disabled>Comment</button>
         </footer>
         <div>
-          <Comments url="http://localhost:3000/" id={this.state.id} title={this.state.title} />
+          <Comments url={this.state.link} id={this.state.id} title={this.state.title} />
         </div>
       </div>    
     )
