@@ -9,7 +9,7 @@ class Comments extends React.Component {
         const disqusShortname = 'mybjjgameplan';
         const disqusConfig = {
             url: this.props.url,
-            identifier: this.props.id,
+            identifier: this.props.url,
             title: this.props.title,
         };
         console.log(this.props.url, this.props.id, this.props.title , "lets see")

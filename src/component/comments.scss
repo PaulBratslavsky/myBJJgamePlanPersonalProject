@@ -1,4 +1,13 @@
 div.comments {
   background: white;
   padding: 1rem;
+
+  div#placement-bottom {
+    background: red;
+  } 
+
+  div.post-list {
+    background: red;
+  }
 }
+
