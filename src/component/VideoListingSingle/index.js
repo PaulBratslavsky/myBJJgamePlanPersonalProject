@@ -12,7 +12,6 @@ export default class VideoListSingle extends Component {
       title,
     } = this.props.item;
 
-    console.log(id, "What is this")
     const postVideo = ReactHtmlParser(acf.bjj_video);
     const postTitle = ReactHtmlParser(title.rendered);
     const postOptions = ReactHtmlParser(acf.options);
