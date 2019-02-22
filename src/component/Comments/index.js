@@ -6,6 +6,8 @@ import './comments.scss';
 
 class Comments extends React.Component {
     render() {
+
+        console.log(this.props.url, "What url is this");
         const disqusShortname = 'mybjjgameplan';
         const disqusConfig = {
             url: this.props.url,

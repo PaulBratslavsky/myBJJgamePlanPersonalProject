@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
-import Comments from './Comments';
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+
+// IMPORT COMPONENTS
+import Comments from '../Comments'
 
 export default class VideoSingleDetails extends Component {
   state = {
@@ -8,7 +11,7 @@ export default class VideoSingleDetails extends Component {
   }
 
   async componentDidMount() {
-    const currentPost = this.props.pageId;
+    const currentPost = this.props.match.params.id;
     try {
         const data = await fetch(`https://bjjandfriends.com/wp-json/wp/v2/mybjjgameplan/${currentPost}`);
         const jsonData = await data.json();
@@ -41,10 +44,12 @@ export default class VideoSingleDetails extends Component {
   
 
   render() {
-
+    const serverRootUrl = 'http://mybjjgameplan.com';
+    const routeUrl = `${serverRootUrl}/videopost/${this.state.id}`;
 
     console.log("before props", this.state.link, this.props.pageId, this.state.title);
     return (
+      <div className="videos container">
       <div className="video">
         <header className="video-header">
           <h2 className="text-uppercase">{this.state.title}</h2>
@@ -62,13 +67,13 @@ export default class VideoSingleDetails extends Component {
         </div>
         
         <footer className="video-footer">
-          <button onClick={() => this.props.handleIndexChange(1) }className="btn btn-success">Back</button>
-          <button className="btn btn-primary" disabled>Comment</button>
+          <Link className="btn btn-primary" to={`/videolist`} >Back</Link><button className="btn btn-primary" disabled>Comment</button>
         </footer>
         <div>
-          <Comments url={this.state.link} id={this.state.id} title={this.state.title} />
+          <Comments url={routeUrl} id={this.state.id} title={this.state.title} />
         </div>
       </div>    
+      </div>
     )
   }
 
