@@ -49,7 +49,7 @@ export default class VideoSingleDetails extends Component {
 
     console.log("before props", this.state.link, this.props.pageId, this.state.title);
     return (
-      <div className="videos container">
+      <div className="videos container marg-54">
       <div className="video">
         <header className="video-header">
           <h2 className="text-uppercase">{this.state.title}</h2>
