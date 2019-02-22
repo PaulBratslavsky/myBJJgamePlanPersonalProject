@@ -7,7 +7,9 @@ import Comments from '../Comments'
 
 export default class VideoSingleDetails extends Component {
   state = {
-    data: {}
+    data: {},
+    showComments: false,
+    commentButton: 'Comment'
   }
 
   async componentDidMount() {
@@ -41,13 +43,25 @@ export default class VideoSingleDetails extends Component {
     }
   }
 
-  
+  handleTuggleComments= () => {
+    console.log('tuggle menu clicked');
+    if ( this.state.showComments === false ) {
+      this.setState({
+        showComments: true,
+        commentButton: 'Hide'
+      });
+    } else {
+      this.setState({
+        showComments: false,
+        commentButton: 'Comment'
+      });
+    }
+  }
 
   render() {
     const serverRootUrl = 'http://mybjjgameplan.com';
     const routeUrl = `${serverRootUrl}/videopost/${this.state.id}`;
 
-    console.log("before props", this.state.link, this.props.pageId, this.state.title);
     return (
       <div className="videos container marg-54">
       <div className="video">
@@ -67,10 +81,10 @@ export default class VideoSingleDetails extends Component {
         </div>
         
         <footer className="video-footer">
-          <Link className="btn btn-primary" to={`/videolist`} >Back</Link><button className="btn btn-primary" disabled>Comment</button>
+          <Link className="btn btn-primary" to={`/videolist`} >Back</Link><button onClick={this.handleTuggleComments} className="btn btn-primary">{this.state.commentButton}</button>
         </footer>
         <div>
-          <Comments url={routeUrl} id={this.state.id} title={this.state.title} />
+          { this.state.showComments && <Comments url={routeUrl} id={this.state.id} title={this.state.title} /> }
         </div>
       </div>    
       </div>

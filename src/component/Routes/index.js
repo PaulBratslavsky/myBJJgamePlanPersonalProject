@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { Route, Switch } from 'react-router-dom';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 // IMPORT COMPONENTS 
 import Layout from '../Layout';
@@ -10,7 +10,6 @@ import VideoSingleDetail from '../VideoSingleDetail';
 
 export default class Routes extends Component {
   render() {
-    console.log(this.props.data, 'from Routes');
     return (
       <Layout>
         <Switch>

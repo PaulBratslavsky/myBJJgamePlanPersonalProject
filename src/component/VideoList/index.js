@@ -27,8 +27,7 @@ export default class VideoList extends Component {
   render() {
 
     const data = this.state.data;
-    console.log(this.state.data, "Where are the props")
-  
+      
     return (
       <div className="container videos marg-54">
           { 
