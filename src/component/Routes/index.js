@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import { Route, Switch } from 'react-router-dom';
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 // IMPORT COMPONENTS 
 import Layout from '../Layout';
