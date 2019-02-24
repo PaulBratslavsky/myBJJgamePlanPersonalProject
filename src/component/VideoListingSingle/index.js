@@ -30,7 +30,7 @@ export default class VideoListSingle extends Component {
           <div className="videoWrapper">{postVideo}</div> 
           
           <div className="content">
-            <div className="d-flex justify-content-end .flex-wrap">
+            <div className="tags-container">
               { ( acf.moves != null && acf.moves != '' ) && <small onClick={ () => this.props.filterDataByMoves(acf.moves) }>{postMoves}</small> }
               { ( acf.options != null && acf.options != '' ) && <small onClick={ () => { this.props.filterDataByOption(acf.options)} }>{postOptions}</small> }
               { ( acf.tags != null && acf.tags != '' ) && <small onClick={ () => { this.props.filterDataByTag(acf.tags)} }>{postTags}</small> }
