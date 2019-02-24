@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class VideoListSingle extends Component {
   render() {
@@ -12,8 +12,11 @@ export default class VideoListSingle extends Component {
       title,
     } = this.props.item;
 
+    console.log(this.props, "from video list single")
+
     const postVideo = ReactHtmlParser(acf.bjj_video);
     const postTitle = ReactHtmlParser(title.rendered);
+    const postMoves = ReactHtmlParser(acf.moves);
     const postOptions = ReactHtmlParser(acf.options);
     const postTags = ReactHtmlParser(acf.tags);
     const postExcerpt = ReactHtmlParser(excerpt.rendered);
@@ -28,7 +31,9 @@ export default class VideoListSingle extends Component {
           
           <div className="content">
             <div className="d-flex justify-content-end .flex-wrap">
-              <small>{postOptions}</small><small>{postTags}</small>
+              { ( acf.moves != null && acf.moves != '' ) && <small onClick={ () => this.props.filterDataByMoves(acf.moves) }>{postMoves}</small> }
+              { ( acf.options != null && acf.options != '' ) && <small onClick={ () => { this.props.filterDataByOption(acf.options)} }>{postOptions}</small> }
+              { ( acf.tags != null && acf.tags != '' ) && <small onClick={ () => { this.props.filterDataByTag(acf.tags)} }>{postTags}</small> }
             </div>
             <div>{postExcerpt}</div>
           </div>

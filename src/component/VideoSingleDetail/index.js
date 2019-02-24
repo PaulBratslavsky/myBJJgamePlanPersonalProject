@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // IMPORT COMPONENTS
 import Comments from '../Comments'
@@ -21,6 +21,7 @@ export default class VideoSingleDetails extends Component {
 
         const postVideo = ReactHtmlParser(jsonData.acf.bjj_video);
         const postTitle = ReactHtmlParser(jsonData.title.rendered);
+        const postMoves = ReactHtmlParser(jsonData.acf.moves);
         const postOptions = ReactHtmlParser(jsonData.acf.options);
         const postTags = ReactHtmlParser(jsonData.acf.tags);
         const postContent = ReactHtmlParser(jsonData.content.rendered);
@@ -33,6 +34,7 @@ export default class VideoSingleDetails extends Component {
         title: postTitle,
         content: postContent,
         video: postVideo,
+        moves: postMoves,
         options: postOptions,
         tags: postTags,
         link: postLink,
@@ -75,7 +77,9 @@ export default class VideoSingleDetails extends Component {
           
         <div className="content">
           <div className="d-flex justify-content-end .flex-wrap">
-            <small>{this.state.options}</small><small>{this.state.tags}</small>
+            { ( this.state.moves != null && this.state.moves != '' ) && <small>{this.state.moves}</small> }
+            { ( this.state.options != null && this.state.options != '' ) && <small>{this.state.options}</small> }
+            { ( this.state.tags != null && this.state.tags != '' ) && <small>{this.state.tags}</small> }
           </div>
           <div>{this.state.content}</div>
         </div>
