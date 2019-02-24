@@ -76,7 +76,7 @@ export default class VideoSingleDetails extends Component {
         </div> 
           
         <div className="content">
-          <div className="d-flex justify-content-end .flex-wrap">
+        <div className="tags-container">
             { ( this.state.moves != null && this.state.moves != '' ) && <small>{this.state.moves}</small> }
             { ( this.state.options != null && this.state.options != '' ) && <small>{this.state.options}</small> }
             { ( this.state.tags != null && this.state.tags != '' ) && <small>{this.state.tags}</small> }
