@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import VideoListSingle from '../VideoListingSingle';
 
+// IMPORT COMPONETS
+import Header from '../Header';
+
 export default class VideoList extends Component {
   state = {
     url: "https://bjjandfriends.com/wp-json/wp/v2/mybjjgameplan",
     data: [],
     originalData: [],
-    pageIndex: 1,
     pageId: ''
   }
 
@@ -79,7 +81,9 @@ export default class VideoList extends Component {
 
     const data = this.state.data;
     return (
-      <div className="container videos marg-54">
+      <div>
+        <Header />
+        <div className="container videos marg-54">
           { 
             data.map( item => <VideoListSingle 
               key={item.id} 
@@ -90,6 +94,8 @@ export default class VideoList extends Component {
             />) 
           }
       </div>
+      </div>
+      
     )
   }
 }
