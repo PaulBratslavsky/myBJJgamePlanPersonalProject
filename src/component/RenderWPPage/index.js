@@ -36,7 +36,7 @@ export default class RenderWPPage extends Component {
   render() {
 
     return (
-      <div>
+      <React.Fragment>
         <Header />
         <div className="videos container marg-54">
         <div className="video">
@@ -51,7 +51,7 @@ export default class RenderWPPage extends Component {
           <Comments url={this.state.routeUrl} id={this.state.pageId} title={this.state.pageTitle} />
         </div>
       </div>
-      </div>
+      </React.Fragment>
     )
   }
 }

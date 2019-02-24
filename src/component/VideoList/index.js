@@ -81,7 +81,7 @@ export default class VideoList extends Component {
 
     const data = this.state.data;
     return (
-      <div>
+      <React.Fragment>
         <Header />
         <div className="container videos marg-54">
           { 
@@ -94,7 +94,7 @@ export default class VideoList extends Component {
             />) 
           }
       </div>
-      </div>
+      </React.Fragment>
       
     )
   }

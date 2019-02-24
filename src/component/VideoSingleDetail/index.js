@@ -3,6 +3,7 @@ import ReactHtmlParser from 'react-html-parser';
 import { Link } from "react-router-dom";
 
 // IMPORT COMPONENTS
+import Header from '../Header';
 import Comments from '../Comments'
 
 export default class VideoSingleDetails extends Component {
@@ -65,33 +66,36 @@ export default class VideoSingleDetails extends Component {
     const routeUrl = `${serverRootUrl}/videopost/${this.state.id}`;
 
     return (
-      <div className="videos container marg-54">
-      <div className="video">
-        <header className="video-header">
-          <h2 className="text-uppercase">{this.state.title}</h2>
-        </header>
+      <React.Fragment>
+        <Header />
+        <div className="videos container marg-54">
+        <div className="video">
+          <header className="video-header">
+            <h2 className="text-uppercase">{this.state.title}</h2>
+          </header>
 
-        <div className="videoWrapper">
-          {this.state.video}
-        </div> 
-          
-        <div className="content">
-        <div className="tags-container">
-            { ( this.state.moves != null && this.state.moves != '' ) && <small>{this.state.moves}</small> }
-            { ( this.state.options != null && this.state.options != '' ) && <small>{this.state.options}</small> }
-            { ( this.state.tags != null && this.state.tags != '' ) && <small>{this.state.tags}</small> }
+          <div className="videoWrapper">
+            {this.state.video}
+          </div> 
+            
+          <div className="content">
+          <div className="tags-container">
+              { ( this.state.moves != null && this.state.moves != '' ) && <small>{this.state.moves}</small> }
+              { ( this.state.options != null && this.state.options != '' ) && <small>{this.state.options}</small> }
+              { ( this.state.tags != null && this.state.tags != '' ) && <small>{this.state.tags}</small> }
+            </div>
+            <div>{this.state.content}</div>
           </div>
-          <div>{this.state.content}</div>
+          
+          <footer className="video-footer">
+            <Link className="btn btn-primary" to={`/videolist`} >Back</Link><button onClick={this.handleTuggleComments} className="btn btn-primary">{this.state.commentButton}</button>
+          </footer>
+          <div>
+            { this.state.showComments && <Comments url={routeUrl} id={this.state.id} title={this.state.title} /> }
+          </div>
+        </div>    
         </div>
-        
-        <footer className="video-footer">
-          <Link className="btn btn-primary" to={`/videolist`} >Back</Link><button onClick={this.handleTuggleComments} className="btn btn-primary">{this.state.commentButton}</button>
-        </footer>
-        <div>
-          { this.state.showComments && <Comments url={routeUrl} id={this.state.id} title={this.state.title} /> }
-        </div>
-      </div>    
-      </div>
+      </React.Fragment>
     )
   }
 
