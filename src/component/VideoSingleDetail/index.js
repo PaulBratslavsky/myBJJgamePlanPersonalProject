@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import { Link } from "react-router-dom";
+import { processVideoUrl } from '../ProcessVideoUrl';
 
 // IMPORT COMPONENTS
 import Header from '../Header';
@@ -20,6 +21,7 @@ export default class VideoSingleDetails extends Component {
         const jsonData = await data.json();
         /* You can define the object and set it to state */
 
+        const postVideoUrl = jsonData.acf.video_url;
         const postVideo = ReactHtmlParser(jsonData.acf.bjj_video);
         const postTitle = ReactHtmlParser(jsonData.title.rendered);
         const postMoves = ReactHtmlParser(jsonData.acf.moves);
@@ -28,6 +30,7 @@ export default class VideoSingleDetails extends Component {
         const postContent = ReactHtmlParser(jsonData.content.rendered);
         const postLink = jsonData.link;
 
+        const finalUrl = processVideoUrl(postVideoUrl);
 
 
         this.setState({
@@ -39,7 +42,8 @@ export default class VideoSingleDetails extends Component {
         options: postOptions,
         tags: postTags,
         link: postLink,
-        url: currentPost 
+        url: currentPost,
+        videoUrl: finalUrl
         });
     } catch(error) {
       console.log(error, 'Failed in loading Json ');
@@ -61,9 +65,13 @@ export default class VideoSingleDetails extends Component {
     }
   }
 
+  
   render() {
     const serverRootUrl = 'http://mybjjgameplan.com';
     const routeUrl = `${serverRootUrl}/videopost/${this.state.id}`;
+
+    console.log(this.state.videoUrl, "why is this undifined?");
+
 
     return (
       <React.Fragment>
@@ -75,8 +83,15 @@ export default class VideoSingleDetails extends Component {
           </header>
 
           <div className="videoWrapper">
-            {this.state.video}
-          </div> 
+            <iframe 
+              width="560" 
+              height="315" 
+              src={this.state.videoUrl}
+              frameBorder="0" 
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen>
+            </iframe>
+          </div>
             
           <div className="content">
           <div className="tags-container">

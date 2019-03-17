@@ -7,6 +7,7 @@ import Home from '../Home';
 import RenderWPPage from '../RenderWPPage';
 import VideoList from '../VideoList';
 import VideoSingleDetail from '../VideoSingleDetail';
+import AddVideoPost from '../CreateVideoPost';
 
 export default class Routes extends Component {
   render() {
@@ -15,6 +16,7 @@ export default class Routes extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/letstalk" component={RenderWPPage} />
+          <Route path="/addvideopost" component={AddVideoPost} />
           <Route path="/videolist" component={VideoList} />
           <Route path="/videopost/:id" component={VideoSingleDetail} />
         </Switch>
